@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function FAQPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
@@ -15,7 +18,7 @@ export default function FAQPage() {
             </div>
             <div>
               <h2 className="text-xl font-bold text-blue-400 mb-2">How do I place an order?</h2>
-              <p className="text-gray-300">Browse our products, add your favorites to the cart, and follow the checkout process. It's quick and easy!</p>
+              <p className="text-gray-300">Browse our products, add your favorites to the cart, and follow the checkout process. It&apos;s quick and easy!</p>
             </div>
             <div>
               <h2 className="text-xl font-bold text-blue-400 mb-2">Do you ship internationally?</h2>
@@ -23,12 +26,12 @@ export default function FAQPage() {
             </div>
             <div>
               <h2 className="text-xl font-bold text-blue-400 mb-2">How can I contact support?</h2>
-              <p className="text-gray-300">Use our <a href="/contact" className="text-blue-400 underline">Contact</a> page or email us at info@tishyafoods.com.</p>
+              <p className="text-gray-300">Use our <Link href="/contact" className="text-blue-400 underline">Contact</Link> page or email us at info@tishyafoods.com.</p>
             </div>
           </div>
         </div>
         <div className="flex-1 flex justify-center md:justify-end mt-8 md:mt-0">
-          <img src="/logo.png" alt="Tishya Foods Logo" className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-white p-4 shadow-lg" />
+          <Image src="/logo.png" alt="Tishya Foods Logo" width={192} height={192} className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-white p-4 shadow-lg" />
         </div>
       </div>
     </div>

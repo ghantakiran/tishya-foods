@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function ContactPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
@@ -21,7 +23,7 @@ export default function ContactPage() {
           </div>
         </div>
         <div className="flex-1 flex justify-center md:justify-end">
-          <img src="/logo.png" alt="Tishya Foods Logo" className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-white p-4 shadow-lg" />
+          <Image src="/logo.png" alt="Tishya Foods Logo" width={192} height={192} className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-white p-4 shadow-lg" />
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 sm:py-12">
@@ -11,11 +13,11 @@ export default function AboutPage() {
             Our mission is to make plant-based nutrition accessible, enjoyable, and impactful for everyone. We believe in the power of natural ingredients, ethical sourcing, and eco-friendly packaging.
           </p>
           <p className="text-gray-400 text-center md:text-left">
-            Whether you're an athlete, a health enthusiast, or simply looking to make better food choices, Tishya Foods is here to fuel your journey with taste and purpose.
+            Whether you&apos;re an athlete, a health enthusiast, or simply looking to make better food choices, Tishya Foods is here to fuel your journey with taste and purpose.
           </p>
         </div>
         <div className="flex-1 flex justify-center md:justify-end">
-          <img src="/logo.png" alt="Tishya Foods Logo" className="w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-white p-4 shadow-lg" />
+          <Image src="/logo.png" alt="Tishya Foods Logo" width={224} height={224} className="w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-white p-4 shadow-lg" />
         </div>
       </div>
     </div>
