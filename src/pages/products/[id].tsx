@@ -61,7 +61,7 @@ export default function ProductDetail() {
       // Upload to Supabase Storage
       const fileExt = imageFile.name.split('.').pop();
       const fileName = `${id}-${Date.now()}.${fileExt}`;
-      const { data: storageData, error: storageError } = await supabase.storage.from('product-images').upload(fileName, imageFile, { upsert: true });
+      const { error: storageError } = await supabase.storage.from('product-images').upload(fileName, imageFile, { upsert: true });
       if (storageError) {
         setError('Image upload failed: ' + storageError.message);
         return;
