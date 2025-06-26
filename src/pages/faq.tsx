@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 export default function FAQPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
-      <div className="card p-6 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row gap-10 items-center">
+    <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="bg-white rounded-3xl shadow-xl flex flex-col md:flex-row gap-12 items-center p-10">
         <div className="flex-1">
-          <h1 className="text-3xl sm:text-5xl font-extrabold mb-6 text-gray-100 text-center md:text-left">Frequently Asked Questions</h1>
+          <h1 className="text-4xl font-extrabold mb-6 text-gray-900 text-center md:text-left">Frequently Asked Questions</h1>
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-bold text-blue-400 mb-2">What makes Tishya Foods different?</h2>

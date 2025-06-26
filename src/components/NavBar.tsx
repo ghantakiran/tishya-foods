@@ -8,32 +8,32 @@ export default function NavBar() {
   const { user, signOut } = useAuth();
 
   return (
-    <nav className="bg-[#222] text-white px-4 py-3 flex flex-wrap gap-4 items-center justify-between shadow-md">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md text-gray-900 px-8 py-4 flex flex-wrap gap-4 items-center justify-between shadow-md border-b border-gray-200">
       <div className="flex items-center gap-3">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Tishya Foods Logo" width={48} height={48} className="rounded-full bg-white p-1" />
-          <span className="font-extrabold text-2xl tracking-wide text-white">TISHYA</span>
+          <Image src="/logo.png" alt="Tishya Foods Logo" width={48} height={48} className="rounded-full bg-white p-1 shadow" />
+          <span className="font-extrabold text-2xl tracking-wide text-gray-900">TISHYA</span>
         </Link>
       </div>
-      <div className="flex gap-4 flex-wrap items-center">
-        <Link href="/products" className="hover:text-blue-400 font-semibold">Products</Link>
-        <Link href="/blog" className="hover:text-blue-400 font-semibold">Blog</Link>
-        <Link href="/cart" className="hover:text-blue-400 font-semibold">Cart</Link>
+      <div className="flex gap-6 flex-wrap items-center text-lg font-medium">
+        <Link href="/products" className="hover:text-green-700 transition-colors">Products</Link>
+        <Link href="/blog" className="hover:text-green-700 transition-colors">Blog</Link>
+        <Link href="/cart" className="hover:text-green-700 transition-colors">Cart</Link>
         {user ? (
           <>
-            <Link href="/admin/orders" className="hover:text-blue-400 font-semibold">Admin</Link>
-            <span className="text-sm text-blue-300">{user.email}</span>
+            <Link href="/admin/orders" className="hover:text-green-700 transition-colors">Admin</Link>
+            <span className="text-sm text-green-700">{user.email}</span>
             <button 
               onClick={() => signOut()} 
-              className="hover:text-blue-400 text-sm font-semibold"
+              className="hover:text-green-700 text-sm font-semibold transition-colors"
             >
               Sign Out
             </button>
           </>
         ) : (
           <>
-            <Link href="/auth/signin" className="hover:text-blue-400 font-semibold">Sign In</Link>
-            <Link href="/auth/signup" className="hover:text-blue-400 font-semibold">Sign Up</Link>
+            <Link href="/auth/signin" className="hover:text-green-700 transition-colors">Sign In</Link>
+            <Link href="/auth/signup" className="hover:text-green-700 transition-colors">Sign Up</Link>
           </>
         )}
       </div>
