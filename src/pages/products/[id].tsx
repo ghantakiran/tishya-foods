@@ -2,10 +2,18 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  created_at: string;
+}
+
 export default function ProductDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -23,7 +31,7 @@ export default function ProductDetail() {
       setProduct(data);
       setName(data.name);
       setDescription(data.description);
-      setPrice(data.price);
+      setPrice(data.price.toString());
     }
   }
 

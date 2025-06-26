@@ -14,8 +14,9 @@ export default function SignUp() {
     try {
       await signUp(email, password);
       router.push('/');
-    } catch (err: any) {
-      setError(err.message || 'Sign up failed');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Sign up failed';
+      setError(errorMessage);
     }
   };
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface CartItem {
   id: string;
@@ -51,7 +52,7 @@ export default function CartPage() {
             ))}
           </ul>
           <div className="font-bold mb-4">Total: ${total.toFixed(2)}</div>
-          <a href="/cart/checkout" className="bg-blue-600 text-white py-2 px-4 rounded">Proceed to Checkout</a>
+          <Link href="/cart/checkout" className="bg-blue-600 text-white py-2 px-4 rounded">Proceed to Checkout</Link>
         </>
       )}
     </div>

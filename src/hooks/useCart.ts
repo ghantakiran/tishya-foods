@@ -37,7 +37,7 @@ export function useCart() {
   async function fetchCartFromSupabase() {
     if (!user) return;
     setLoading(true);
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('carts')
       .select('items')
       .eq('user_id', user.id)
@@ -49,7 +49,7 @@ export function useCart() {
   async function saveCartToSupabase(newCart: CartItem[]) {
     if (!user) return;
     setLoading(true);
-    const { error } = await supabase
+    await supabase
       .from('carts')
       .upsert({ user_id: user.id, items: newCart }, { onConflict: 'user_id' });
     setLoading(false);

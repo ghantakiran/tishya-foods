@@ -2,10 +2,17 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 
+interface BlogPost {
+  id: string;
+  title: string;
+  content: string;
+  created_at: string;
+}
+
 export default function BlogPostDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [error, setError] = useState('');

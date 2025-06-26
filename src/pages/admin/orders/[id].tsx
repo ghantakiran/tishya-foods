@@ -4,11 +4,29 @@ import { supabase } from '../../../lib/supabaseClient';
 
 const STATUS_OPTIONS = ['pending', 'shipped', 'completed', 'cancelled'];
 
+interface Order {
+  id: string;
+  user_id: string;
+  total: number;
+  status: string;
+  created_at: string;
+}
+
+interface OrderItem {
+  id: string;
+  product_id: string;
+  quantity: number;
+  price: number;
+  product?: {
+    name: string;
+  };
+}
+
 export default function OrderDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [order, setOrder] = useState<any>(null);
-  const [items, setItems] = useState<any[]>([]);
+  const [order, setOrder] = useState<Order | null>(null);
+  const [items, setItems] = useState<OrderItem[]>([]);
   const [status, setStatus] = useState('');
   const [error, setError] = useState('');
 
