@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { supabase } from '../../lib/supabaseClient';
 
 interface Product {
@@ -76,8 +77,12 @@ export default function ProductsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map(product => (
           <div key={product.id} className="card p-6 flex flex-col justify-between">
-            <div className="h-32 bg-[#232323] rounded mb-3 flex items-center justify-center border border-[#262626]">
-              <span className="text-gray-500">Product Image</span>
+            <div className="h-32 bg-[#232323] rounded mb-3 flex items-center justify-center border border-[#262626] overflow-hidden">
+              {product.image_url ? (
+                <Image src={product.image_url} alt={product.name} width={120} height={120} className="object-cover w-28 h-28 rounded" />
+              ) : (
+                <span className="text-gray-500">Product Image</span>
+              )}
             </div>
             <h3 className="font-bold text-xl mb-2 text-gray-100">{product.name}</h3>
             <p className="text-gray-300 text-sm mb-3">{product.description}</p>

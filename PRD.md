@@ -39,4 +39,14 @@ Create a modern, SEO-optimized website for Tishya Foods, inspired by tishyafoods
 - Structured data (schema.org) for products and articles.
 - Fast page load times (Core Web Vitals).
 - Social sharing meta tags (Open Graph, Twitter Cards).
-- Google Analytics and Search Console integration. 
+- Google Analytics and Search Console integration.
+
+CREATE TABLE seo_meta (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    page_type TEXT NOT NULL, -- e.g., 'product', 'blog', 'home'
+    page_id uuid,            -- references the relevant table
+    meta_title TEXT,
+    meta_description TEXT,
+    og_image TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+); 
