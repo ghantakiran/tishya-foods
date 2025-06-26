@@ -3,31 +3,53 @@ import { useState } from 'react';
 export default function CheckoutPage() {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
+  const [payment, setPayment] = useState('');
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     // Here you would create the order in Supabase
     setSuccess(true);
-  };
-
-  if (success) {
-    return (
-      <div className="max-w-md mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-4">Order Placed!</h1>
-        <p>Thank you for your purchase. Your order has been placed successfully.</p>
-      </div>
-    );
   }
 
   return (
-    <div className="max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input value={name} onChange={e => setName(e.target.value)} placeholder="Full Name" className="border p-2 rounded" required />
-        <input value={address} onChange={e => setAddress(e.target.value)} placeholder="Shipping Address" className="border p-2 rounded" required />
-        <button type="submit" className="bg-green-600 text-white py-2 rounded">Place Order</button>
-      </form>
+    <div className="max-w-xl mx-auto p-6">
+      <h1 className="text-4xl font-extrabold mb-8 text-gray-100 tracking-wide">Checkout</h1>
+      <div className="card p-6 rounded-lg">
+        {success ? (
+          <div className="text-blue-400 text-xl font-bold text-center py-8">
+            Thank you for your order! 🎉
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              className="border p-2 rounded"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Shipping Address"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+              className="border p-2 rounded"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Payment Details"
+              value={payment}
+              onChange={e => setPayment(e.target.value)}
+              className="border p-2 rounded"
+              required
+            />
+            <button type="submit" className="btn text-lg mt-2">Place Order</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 } 

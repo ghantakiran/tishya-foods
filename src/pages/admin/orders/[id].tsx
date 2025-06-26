@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
+import { AuthProvider } from '../../../components/AuthProvider';
+import NavBar from '../../../components/NavBar';
+import Footer from '../../../components/Footer';
 
 const STATUS_OPTIONS = ['pending', 'shipped', 'completed', 'cancelled'];
 
@@ -63,32 +66,38 @@ export default function OrderDetail() {
   if (!order) return <div className="p-6">Loading...</div>;
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Order Details</h1>
-      <div className="mb-4">
-        <div><b>Order ID:</b> {order.id}</div>
-        <div><b>User ID:</b> {order.user_id}</div>
-        <div><b>Total:</b> ${order.total}</div>
-        <div><b>Created At:</b> {new Date(order.created_at).toLocaleString()}</div>
+    <AuthProvider>
+      <NavBar />
+      <div className="max-w-2xl mx-auto p-6">
+        <div className="card p-8 rounded-lg">
+          <h1 className="text-3xl font-extrabold mb-6 text-gray-100 text-center">Order Details</h1>
+          <div className="mb-4 text-gray-200">
+            <div><b>Order ID:</b> {order.id}</div>
+            <div><b>User ID:</b> {order.user_id}</div>
+            <div><b>Total:</b> ${order.total}</div>
+            <div><b>Created At:</b> {new Date(order.created_at).toLocaleString()}</div>
+          </div>
+          <form onSubmit={handleStatusUpdate} className="flex gap-2 items-center mb-6">
+            <label className="font-semibold">Status:</label>
+            <select value={status} onChange={e => setStatus(e.target.value)} className="border p-2 rounded">
+              {STATUS_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+            </select>
+            <button type="submit" className="btn text-lg">Update</button>
+          </form>
+          {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
+          <h2 className="text-xl font-bold mb-2 text-blue-400">Items</h2>
+          <ul className="divide-y">
+            {items.map(item => (
+              <li key={item.id} className="py-2">
+                <div><b>Product:</b> {item.product?.name || item.product_id}</div>
+                <div><b>Quantity:</b> {item.quantity}</div>
+                <div><b>Price:</b> ${item.price}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <form onSubmit={handleStatusUpdate} className="flex gap-2 items-center mb-6">
-        <label className="font-semibold">Status:</label>
-        <select value={status} onChange={e => setStatus(e.target.value)} className="border p-2 rounded">
-          {STATUS_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-        </select>
-        <button type="submit" className="bg-green-600 text-white py-2 px-4 rounded">Update</button>
-      </form>
-      {error && <div className="text-red-500 mb-4">{error}</div>}
-      <h2 className="text-xl font-bold mb-2">Items</h2>
-      <ul className="divide-y">
-        {items.map(item => (
-          <li key={item.id} className="py-2">
-            <div><b>Product:</b> {item.product?.name || item.product_id}</div>
-            <div><b>Quantity:</b> {item.quantity}</div>
-            <div><b>Price:</b> ${item.price}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <Footer />
+    </AuthProvider>
   );
 } 

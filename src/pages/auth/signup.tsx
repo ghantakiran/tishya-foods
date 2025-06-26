@@ -21,28 +21,30 @@ export default function SignUp() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
-        {error && <div className="text-red-500">{error}</div>}
-        <button type="submit" className="bg-blue-600 text-white py-2 rounded">Sign Up</button>
-      </form>
+    <div className="max-w-md mx-auto mt-20 p-6">
+      <div className="card p-8 rounded-lg">
+        <h2 className="text-3xl font-extrabold mb-6 text-blue-400 text-center">Sign Up</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="border p-2 rounded"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="border p-2 rounded"
+            required
+          />
+          {error && <div className="text-red-500 text-center">{error}</div>}
+          <button type="submit" className="btn text-lg mt-2">Sign Up</button>
+        </form>
+      </div>
     </div>
   );
 } 

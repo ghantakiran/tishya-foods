@@ -40,12 +40,11 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Our Products</h1>
-      
+    <div className="max-w-6xl mx-auto p-6">
+      <h1 className="text-4xl font-extrabold mb-8 text-gray-100 tracking-wide">Our Products</h1>
       {/* Add Product Form */}
-      <div className="bg-gray-50 p-6 rounded-lg mb-8">
-        <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
+      <div className="card p-6 rounded-lg mb-10">
+        <h2 className="text-2xl font-bold mb-4 text-blue-400">Add New Product</h2>
         <form onSubmit={handleAddProduct} className="flex flex-col gap-3">
           <input 
             value={name} 
@@ -69,34 +68,31 @@ export default function ProductsPage() {
             className="border p-2 rounded" 
             required 
           />
-          <button type="submit" className="bg-green-600 text-white py-2 rounded hover:bg-green-700">
-            Add Product
-          </button>
+          <button type="submit" className="btn mt-2">Add Product</button>
           {error && <div className="text-red-500">{error}</div>}
         </form>
       </div>
-
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map(product => (
-          <div key={product.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-            <div className="h-32 bg-gray-200 rounded mb-3 flex items-center justify-center">
+          <div key={product.id} className="card p-6 flex flex-col justify-between">
+            <div className="h-32 bg-[#232323] rounded mb-3 flex items-center justify-center border border-[#262626]">
               <span className="text-gray-500">Product Image</span>
             </div>
-            <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-            <p className="text-gray-600 text-sm mb-3">{product.description}</p>
-            <div className="flex justify-between items-center">
-              <span className="text-xl font-bold text-green-600">${product.price}</span>
+            <h3 className="font-bold text-xl mb-2 text-gray-100">{product.name}</h3>
+            <p className="text-gray-300 text-sm mb-3">{product.description}</p>
+            <div className="flex justify-between items-center mt-auto">
+              <span className="text-2xl font-bold text-blue-400">${product.price}</span>
               <div className="flex gap-2">
                 <Link 
                   href={`/products/${product.id}`}
-                  className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700"
+                  className="btn text-sm"
                 >
                   Edit
                 </Link>
                 <Link 
                   href="/cart"
-                  className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700"
+                  className="btn text-sm"
                 >
                   Add to Cart
                 </Link>
@@ -105,7 +101,6 @@ export default function ProductsPage() {
           </div>
         ))}
       </div>
-      
       {products.length === 0 && (
         <div className="text-center py-8 text-gray-500">
           No products available. Add your first product above!

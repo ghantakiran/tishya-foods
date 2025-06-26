@@ -27,34 +27,36 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-      {cart.length === 0 ? (
-        <div>Your cart is empty.</div>
-      ) : (
-        <>
-          <ul className="divide-y mb-4">
-            {cart.map(item => (
-              <li key={item.id} className="py-2 flex justify-between items-center">
-                <div>
-                  <div className="font-semibold">{item.name}</div>
-                  <div className="text-sm">${item.price} x </div>
-                  <input
-                    type="number"
-                    min={1}
-                    value={item.quantity}
-                    onChange={e => handleQuantityChange(item.id, parseInt(e.target.value))}
-                    className="border p-1 rounded w-16 ml-2"
-                  />
-                </div>
-                <button onClick={() => handleRemove(item.id)} className="bg-red-600 text-white px-2 py-1 rounded">Remove</button>
-              </li>
-            ))}
-          </ul>
-          <div className="font-bold mb-4">Total: ${total.toFixed(2)}</div>
-          <Link href="/cart/checkout" className="bg-blue-600 text-white py-2 px-4 rounded">Proceed to Checkout</Link>
-        </>
-      )}
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-4xl font-extrabold mb-8 text-gray-100 tracking-wide">Your Cart</h1>
+      <div className="card p-6 rounded-lg">
+        {cart.length === 0 ? (
+          <div className="text-gray-400 text-lg">Your cart is empty.</div>
+        ) : (
+          <>
+            <ul className="divide-y mb-4">
+              {cart.map(item => (
+                <li key={item.id} className="py-4 flex justify-between items-center">
+                  <div>
+                    <div className="font-semibold text-lg text-gray-100">{item.name}</div>
+                    <div className="text-sm text-gray-400">${item.price} x </div>
+                    <input
+                      type="number"
+                      min={1}
+                      value={item.quantity}
+                      onChange={e => handleQuantityChange(item.id, parseInt(e.target.value))}
+                      className="border p-1 rounded w-16 ml-2 bg-[#232323] text-white border-[#444]"
+                    />
+                  </div>
+                  <button onClick={() => handleRemove(item.id)} className="btn text-sm">Remove</button>
+                </li>
+              ))}
+            </ul>
+            <div className="font-bold mb-4 text-2xl text-blue-400">Total: ${total.toFixed(2)}</div>
+            <Link href="/cart/checkout" className="btn text-lg">Proceed to Checkout</Link>
+          </>
+        )}
+      </div>
     </div>
   );
 } 
