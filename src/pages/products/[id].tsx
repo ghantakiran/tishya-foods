@@ -85,31 +85,35 @@ export default function ProductDetail() {
   return (
     <AuthProvider>
       <NavBar />
-      <div className="max-w-xl mx-auto p-6">
-        <div className="card p-8 rounded-lg">
-          <h1 className="text-3xl font-extrabold mb-6 text-gray-100 text-center">Edit Product</h1>
-          <form onSubmit={handleUpdate} className="flex flex-col gap-4 mb-6">
-            {previewUrl && (
-              <div className="flex justify-center mb-2">
-                <Image src={previewUrl} alt="Product Image" width={180} height={180} className="rounded-lg object-cover" />
-              </div>
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              ref={fileInputRef}
-              onChange={handleImageChange}
-              className="border p-2 rounded bg-[#232323] text-gray-200"
-            />
-            <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" className="border p-2 rounded" required />
-            <input value={description} onChange={e => setDescription(e.target.value)} placeholder="Description" className="border p-2 rounded" />
-            <input value={price} onChange={e => setPrice(e.target.value)} placeholder="Price" type="number" className="border p-2 rounded" required />
-            <button type="submit" className="btn text-lg">Update Product</button>
-            {error && <div className="text-red-500 text-center">{error}</div>}
-          </form>
-          <button onClick={handleDelete} className="btn text-lg bg-red-600 hover:bg-red-700">Delete Product</button>
-        </div>
-      </div>
+      <main className="bg-white min-h-screen py-16">
+        <section className="container mx-auto px-4 flex flex-col items-center">
+          <div className="max-w-xl w-full">
+            <div className="bg-white rounded-3xl shadow-xl p-8">
+              <h1 className="text-3xl font-extrabold mb-6 text-gray-900 text-center">Edit Product</h1>
+              <form onSubmit={handleUpdate} className="flex flex-col gap-4 mb-6">
+                {previewUrl && (
+                  <div className="flex justify-center mb-2">
+                    <Image src={previewUrl} alt="Product Image" width={180} height={180} className="rounded-lg object-cover" />
+                  </div>
+                )}
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                  className="border p-3 rounded-xl text-lg"
+                />
+                <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" className="border p-3 rounded-xl text-lg" required />
+                <input value={description} onChange={e => setDescription(e.target.value)} placeholder="Description" className="border p-3 rounded-xl text-lg" />
+                <input value={price} onChange={e => setPrice(e.target.value)} placeholder="Price" type="number" className="border p-3 rounded-xl text-lg" required />
+                <button type="submit" className="w-full py-3 rounded-xl bg-green-700 text-white font-semibold hover:bg-green-800 transition-colors duration-200 text-lg">Update Product</button>
+                {error && <div className="text-red-500 text-center">{error}</div>}
+              </form>
+              <button onClick={handleDelete} className="w-full py-3 rounded-xl bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors duration-200 text-lg">Delete Product</button>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </AuthProvider>
   );

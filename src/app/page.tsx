@@ -4,34 +4,24 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">
-            Plant-Based Protein for a Healthier You
-          </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Discover our range of delicious, nutritious plant-based protein products 
-            that fuel your active lifestyle while supporting the planet.
+      <section className="relative bg-white text-gray-900 py-24 border-b border-gray-100">
+        <div className="container mx-auto px-4 flex flex-col items-center text-center">
+          <h1 className="text-6xl font-bold mb-6 tracking-tight">Plant-Based Protein for a Healthier You</h1>
+          <p className="text-2xl mb-8 max-w-2xl mx-auto text-gray-600">
+            Discover our range of delicious, nutritious plant-based protein products that fuel your active lifestyle while supporting the planet.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Link 
-              href="/products" 
-              className="bg-white text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Shop Products
-            </Link>
-            <Link 
-              href="/blog" 
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-700 transition-colors"
-            >
-              Read Our Blog
-            </Link>
+          <div className="flex gap-4 justify-center flex-wrap mb-12">
+            <Link href="/products">Shop Products</Link>
+            <Link href="/blog">Read Our Blog</Link>
+          </div>
+          <div className="w-full flex justify-center">
+            <img src="/logo.png" alt="Hero Product" className="w-[340px] h-[340px] object-contain rounded-3xl shadow-xl border border-gray-100 bg-white" />
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white border-b border-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Featured Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -79,7 +69,7 @@ export default function Home() {
       </section>
 
       {/* Value Propositions */}
-      <section className="py-16">
+      <section className="py-16 bg-white border-b border-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Why Choose Tishya Foods?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -118,7 +108,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Plant-Based Journey?</h2>
           <p className="text-xl mb-8">
@@ -126,7 +116,7 @@ export default function Home() {
           </p>
           <Link 
             href="/products" 
-            className="bg-white text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            className="bg-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition-colors"
           >
             Shop Now
           </Link>

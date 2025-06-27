@@ -2,47 +2,45 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-12">
+    <footer className="bg-white text-gray-700 py-12 border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">Tishya Foods</h3>
-            <p className="text-gray-300 mb-4">
-              Delicious, nutritious plant-based protein products that fuel your active lifestyle 
-              while supporting the planet.
+          <div className="text-center md:text-left mb-6 md:mb-0">
+            <h3 className="text-xl font-bold mb-2">Tishya Foods</h3>
+            <p className="mb-2">
+              Delicious, nutritious plant-based protein products that fuel your active lifestyle while supporting the planet.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white">Facebook</a>
-              <a href="#" className="text-gray-300 hover:text-white">Twitter</a>
-              <a href="#" className="text-gray-300 hover:text-white">Instagram</a>
+            <div className="flex justify-center md:justify-start gap-4 mt-4">
+              <a href="#" aria-label="Facebook" className="hover:opacity-80 transition-opacity">Facebook</a>
+              <a href="#" aria-label="Twitter" className="hover:opacity-80 transition-opacity">Twitter</a>
+              <a href="#" aria-label="Instagram" className="hover:opacity-80 transition-opacity">Instagram</a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><Link href="/" className="text-gray-300 hover:text-white">Home</Link></li>
-              <li><Link href="/products" className="text-gray-300 hover:text-white">Products</Link></li>
-              <li><Link href="/blog" className="text-gray-300 hover:text-white">Blog</Link></li>
-              <li><Link href="/cart" className="text-gray-300 hover:text-white">Cart</Link></li>
-            </ul>
+          <div className="text-center">
+            <h4 className="font-semibold mb-2">Quick Links</h4>
+            <div className="flex flex-col md:flex-row gap-1 md:gap-6 items-center justify-center">
+              <Link href="/" className="px-2 py-1">Home</Link>
+              <Link href="/products" className="px-2 py-1">Products</Link>
+              <Link href="/blog" className="px-2 py-1">Blog</Link>
+              <Link href="/cart" className="px-2 py-1">Cart</Link>
+            </div>
           </div>
 
           {/* Support */}
-          <div>
-            <h4 className="font-semibold mb-4">Support</h4>
-            <ul className="space-y-2">
-              <li><Link href="/auth/signin" className="text-gray-300 hover:text-white">Sign In</Link></li>
-              <li><Link href="/auth/signup" className="text-gray-300 hover:text-white">Sign Up</Link></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Contact Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">FAQ</a></li>
-            </ul>
+          <div className="text-center">
+            <h4 className="font-semibold mb-2">Support</h4>
+            <div className="flex flex-col md:flex-row gap-1 md:gap-6 items-center justify-center">
+              <Link href="/auth/signin" className="px-2 py-1">Sign In</Link>
+              <Link href="/auth/signup" className="px-2 py-1">Sign Up</Link>
+              <Link href="/contact" className="px-2 py-1">Contact Us</Link>
+              <Link href="/faq" className="px-2 py-1">FAQ</Link>
+            </div>
           </div>
         </div>
-
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+        <div className="border-t border-gray-200 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; 2024 Tishya Foods. All rights reserved.</p>
         </div>
       </div>

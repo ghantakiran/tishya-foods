@@ -8,12 +8,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <NavBar />
-      <main className="min-h-screen flex flex-col">
-        <div className="flex-grow">
+      <div className="min-h-screen flex flex-col bg-white">
+        <main className="flex-grow">
           <Component {...pageProps} />
-        </div>
+        </main>
         <Footer />
-      </main>
+      </div>
     </AuthProvider>
   );
 }

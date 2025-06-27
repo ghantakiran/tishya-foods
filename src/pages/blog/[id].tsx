@@ -53,18 +53,22 @@ export default function BlogPostDetail() {
   return (
     <AuthProvider>
       <NavBar />
-      <div className="max-w-xl mx-auto p-6">
-        <div className="card p-8 rounded-lg">
-          <h1 className="text-3xl font-extrabold mb-6 text-gray-100 text-center">Edit Blog Post</h1>
-          <form onSubmit={handleUpdate} className="flex flex-col gap-4 mb-6">
-            <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" className="border p-2 rounded" required />
-            <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Content" className="border p-2 rounded h-32" required />
-            <button type="submit" className="btn text-lg">Update Post</button>
-            {error && <div className="text-red-500 text-center">{error}</div>}
-          </form>
-          <button onClick={handleDelete} className="btn text-lg bg-red-600 hover:bg-red-700">Delete Post</button>
-        </div>
-      </div>
+      <main className="bg-white min-h-screen py-16">
+        <section className="container mx-auto px-4 flex flex-col items-center">
+          <div className="max-w-xl w-full">
+            <div className="bg-white rounded-3xl shadow-xl p-8">
+              <h1 className="text-3xl font-extrabold mb-6 text-gray-900 text-center">Edit Blog Post</h1>
+              <form onSubmit={handleUpdate} className="flex flex-col gap-4 mb-6">
+                <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" className="border p-3 rounded-xl text-lg" required />
+                <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Content" className="border p-3 rounded-xl h-32 text-lg" required />
+                <button type="submit" className="w-full py-3 rounded-xl bg-green-700 text-white font-semibold hover:bg-green-800 transition-colors duration-200 text-lg">Update Post</button>
+                {error && <div className="text-red-500 text-center">{error}</div>}
+              </form>
+              <button onClick={handleDelete} className="w-full py-3 rounded-xl bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors duration-200 text-lg">Delete Post</button>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </AuthProvider>
   );
